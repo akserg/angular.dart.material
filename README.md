@@ -1,4 +1,4 @@
-angular_dart_material
+Angular Material
 =====================
 
 Material Design implementation on Angular Dart.
