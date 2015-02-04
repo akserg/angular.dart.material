@@ -12,9 +12,7 @@ class Ripples {
   dom.DivElement ripple;
   var rippleColor;
   
-  Ripples(this.element, {this.options: const {}});
-  
-  void init() {
+  Ripples(this.element, [this.options = const {}]) {
     this.element.onMouseDown.listen(startRipplesHandler);
     this.element.onTouchStart.listen(startRipplesHandler);
   }
