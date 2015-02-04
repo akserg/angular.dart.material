@@ -4,15 +4,17 @@ import 'dart:html' as dom;
 import 'dart:async';
 import 'dart:math' as math;
 
+//import 'material.dart';
+
 class Ripples {
   RegExp agentRegExp = new RegExp(r'Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini');
   dom.Element element;
-  Map options;
+//  MaterialOptions options;
   dom.DivElement wrapper;
   dom.DivElement ripple;
   var rippleColor;
   
-  Ripples(this.element, [this.options = const {}]) {
+  Ripples(this.element) { //, this.options) {
     this.element.onMouseDown.listen(startRipplesHandler);
     this.element.onTouchStart.listen(startRipplesHandler);
   }
@@ -37,7 +39,7 @@ class Ripples {
     var relX = getRelX(event);
     
     // If relY and/or relX are false, return the event
-    if(!relY && !relX) {
+    if (relY == null || relX == null) {
       return;
     }
     
@@ -72,7 +74,7 @@ class Ripples {
     element.onTouchEnd.listen(endRipplesHandler);
   }
   
-  void endRipplesHandler(dom.Event event) {
+  endRipplesHandler(dom.Event event) {
     ripple.dataset['mousedown'] = 'off';
 
     if (ripple.dataset['animating'] == 'off') {
@@ -92,33 +94,33 @@ class Ripples {
 
     if (!isTouch()) {
       // Get the mouse position relative to the ripple wrapper
-      return (event as dom.MouseEvent).page.x - wrapperOffset.left;
+      return ((event as dom.MouseEvent).page.x - wrapperOffset.left).toString();
     } else {
       // Make sure the user is using only one finger and then get the touch
       // position relative to the ripple wrapper
       if ((event as dom.TouchEvent).touches.length != 1) {
-        return (event as dom.TouchEvent).touches[0].page.x - wrapperOffset.left;
+        return ((event as dom.TouchEvent).touches[0].page.x - wrapperOffset.left).toString();
       }
 
-      return false;
+      return null;
     }
   }
   
   // Get the relY
-  dynamic getRelY(dom.Event event) {
+  String getRelY(dom.Event event) {
     var wrapperOffset = wrapper.offset;
 
     if (!isTouch()) {
       // Get the mouse position relative to the ripple wrapper
-      return (event as dom.MouseEvent).page.y - wrapperOffset.top;
+      return ((event as dom.MouseEvent).page.y - wrapperOffset.top).toString();
     } else {
       // Make sure the user is using only one finger and then get the touch
       // position relative to the ripple wrapper
       if ((event as dom.TouchEvent).touches.length != 1) {
-        return (event as dom.TouchEvent).touches[0].page.y - wrapperOffset.top;
+        return ((event as dom.TouchEvent).touches[0].page.y - wrapperOffset.top).toString();
       }
 
-      return false;
+      return null;
     }
   }
   
@@ -146,7 +148,8 @@ class Ripples {
   
   // Verify if the client is using a mobile device
   bool isTouch() {
-    return agentRegExp.firstMatch(dom.window.navigator.userAgent).groupCount > 0;
+    Match m = agentRegExp.firstMatch(dom.window.navigator.userAgent);
+    return m != null ? m.groupCount > 0 : false;
   }
   
   // End the animation of the ripple
@@ -184,13 +187,13 @@ class Ripples {
   
   // Turn on the ripple effect
   rippleOn() {
-    var size = getNewSize();
+    var size = getNewSize().toString();
 
     if (hasTransitionSupport()) {
-      ripple.style.setProperty("-ms-transform", "scale(" + size + ")");
-      ripple.style.setProperty("-moz-transform", "scale(" + size + ")");
-      ripple.style.setProperty("-webkit-transform", "scale(" + size + ")");
-      ripple.style.transform = "scale(" + size + ")";
+      ripple.style.setProperty("-ms-transform", "scale(${size})");
+      ripple.style.setProperty("-moz-transform", "scale(${size})");
+      ripple.style.setProperty("-webkit-transform", "scale(${size})");
+      ripple.style.transform = "scale(${size})";
       ripple.classes.add("ripple-on");
       ripple.dataset["animating"] = "on";
       ripple.dataset["mousedown"] = "on";

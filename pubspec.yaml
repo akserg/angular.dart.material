@@ -1,18 +1,7 @@
 name: angular_material
 version: 0.1.0
-authors:
-- Sergey Akopkokhyants <akserg@gmail.com>
+author: Sergey Akopkokhyants <akserg@gmail.com>
 description: Material Design implementation on Angular Dart.
 homepage: https://github.com/akserg/angular.dart.material
 environment:
   sdk: '>=1.6.0 <2.0.0'
-dependencies:
-  angular: '>=1.0.0 <2.0.0'
-dev_dependencies:
-  dartmocks: '>= 0.5.0'
-  guinness: '>= 0.1.3'
-transformers:
-- angular:
-    html_files:
-      - web/button/button_demo.html
-  
