@@ -16,3 +16,4 @@ test.log
 node_modules
 .pub
 build
+*.pdf
