@@ -5,3 +5,5 @@ description: Material Design implementation on Angular Dart.
 homepage: https://github.com/akserg/angular.dart.material
 environment:
   sdk: '>=1.6.0 <2.0.0'
+dependencies:
+  browser: '>=0.10.0+2 <0.11.0'

@@ -36,7 +36,7 @@ class Material {
         element.blur();
       });
       //
-      handle('.form-control', (dom.InputElement element) {
+      handle('.form-control', (element) {
         if (element.value == '' && element.checkValidity()) {
           element.classes.add('empty');
         } else {
@@ -74,7 +74,7 @@ class Material {
     });
     
     dom.document.onKeyUp.listen((dom.KeyboardEvent event) {
-      handle('.form-control', (dom.InputElement element) {
+      handle('.form-control', (element) {
         if (element.value == '' && element.checkValidity()) {
           element.classes.add('empty');
         } else {
@@ -187,11 +187,11 @@ class Material {
     dom.ElementList list = dom.document.querySelectorAll(selector != null ? selector : options.inputElements);
     list.takeWhile(notmdproc).forEach((dom.Element el) {
       el.dataset['mdproc'] = 'true';
-      inputHelper(el as dom.InputElement);
+      inputHelper(el);
     });
   }
   
-  inputHelper(dom.InputElement el) {
+  inputHelper(el) {
     if (!el.attributes.containsKey('data-hint') && !el.classes.contains('floating-label')) {
       return;
     }
