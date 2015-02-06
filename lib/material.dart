@@ -8,15 +8,21 @@ import 'dart:async';
 import 'dart:math' as math;
 
 import "package:angular/angular.dart";
+import "package:angular/core_dom/module_internal.dart";
 
 part 'ripples.dart';
+part 'input_component.dart';
+part 'checkbox_component.dart';
 
 /**
  * Material Module.
  */
 class MaterialModule extends Module {
   MaterialModule() {
-    bind(Material);
+    bind(InputComponent);
+    bind(TextareaComponent);
+    bind(SelectComponent);
+    bind(CheckboxCompoent);
   }
 }
 

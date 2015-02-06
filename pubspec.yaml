@@ -20,3 +20,6 @@ transformers:
       entry_point: web/less/material-wfont.less
       include_path: web/less
       output: web/css/material-wfont.css
+  - angular:
+      html_files:
+        - web/index.html
