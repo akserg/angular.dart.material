@@ -3,7 +3,7 @@ Angular Material [![Build Status](https://travis-ci.org/akserg/angular.dart.mate
 
 Bootstrap Material Design implementation for Angular Dart UI.
 
-*Inspired by Federico Zivolo <info@mywebexpression.com> (Bootstrap Material Design)[http://fezvrasta.github.io/bootstrap-material-design] implementation.*
+Inspired by *Federico Zivolo* implementation of [Bootstrap Material Design](http://fezvrasta.github.io/bootstrap-material-design).
 
 This Bootstrap theme is an easy way to use the new [Material Design guidelines by Google](http://www.google.com/design/spec/material-design/introduction.html) in your Bootstrap 3 based application.
 Just include the theme, after the Bootstrap CSS and include the module in your Angular Dart project at the end of your document (just before the `</body>` tag), and everything will be converted to Material Design (Paper) style.
@@ -18,8 +18,17 @@ Is often asked how to change the primary color of this theme without edit the bo
 
 You can do it by creating a less file in your project:
 
-    @import "../bower_components/bootstrap-material-design/less/material-wfont.less";
-
+    dependencies:
+      less_dart: ">=0.1.4 <0.2.0"
+    transformers:
+      - less_dart:
+        entry_point: web/less/ripples.less
+        output: web/css/ripples.css
+    - less_dart:
+        entry_point: web/less/material-wfont.less
+        include_path: web/less
+        output: web/css/material-wfont.css
+    ...
     // Override @primary color with one took from _colors.less
     @primary: @deep-purple;
 
@@ -59,8 +68,7 @@ The syntax to add a Material icon is:
 
 ### Ripples
 
-This is part of the Material Design for Bootstrap project and is a plain JavaScript script which creates the ripple effect when clicking on the specified elements.
-At the moment RipplesJS does not have its own repository but it will probably have one in the future.
+This is part of the Material Design for Bootstrap project and is a Dart script which creates the ripple effect when clicking on the specified elements.
 
 You may want to set a custom color to the ripples of a specific element, to do so write:
 
@@ -68,7 +76,13 @@ You may want to set a custom color to the ripples of a specific element, to do s
 
 ## Compatibility
 
-Currently, Material Design for Bootstrap supports Google Chrome (tested v37+), Mozilla Firefox (tested 30+), and Internet Explorer (tested 11+). Mobile browsers are not currently tested but they may work.
+Currently, Material Design for Bootstrap supports:
+
+- Google Chrome (tested v37+), 
+- Mozilla Firefox (tested 30+), 
+- Internet Explorer (tested 11+). 
+ 
+Mobile browsers are not currently tested but they may work.
 
 
 
