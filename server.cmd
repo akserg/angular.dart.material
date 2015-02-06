@@ -1,0 +1,1 @@
+start "Server" http-server build/web

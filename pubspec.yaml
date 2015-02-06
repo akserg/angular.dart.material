@@ -7,3 +7,13 @@ environment:
   sdk: '>=1.6.0 <2.0.0'
 dependencies:
   browser: '>=0.10.0+2 <0.11.0'
+  angular: '>=1.1.0 <2.0.0'
+  less_dart: ">=0.1.4 <0.2.0"
+transformers:
+  - less_dart:
+      entry_point: web/less/ripples.less
+      output: web/css/ripples.css
+  - less_dart:
+      entry_point: web/less/material-wfont.less
+      include_path: web/less
+      output: web/css/material-wfont.css

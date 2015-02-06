@@ -2,7 +2,7 @@
 
 ##Features
 
-- Buttons
-- Position
-- Transition
+- Ripple effect
+- Material
+- Tests
 

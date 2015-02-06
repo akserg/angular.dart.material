@@ -1,10 +1,26 @@
+// Copyright (C) 2015 Sergey Akopkokhyants.
+// https://github.com/akserg/angular.dart.material
+// All rights reserved.  Please see the LICENSE.md file.part of material;
 library material;
 
 import 'dart:html' as dom;
 import 'dart:async';
+import 'dart:math' as math;
 
-import 'ripples.dart';
+import "package:angular/angular.dart";
 
+part 'ripples.dart';
+
+/**
+ * Material Module.
+ */
+class MaterialModule extends Module {
+  MaterialModule() {
+    bind(Material);
+  }
+}
+
+@Injectable()
 class MaterialOptions {
   var input = true;
   var ripples = true;
@@ -26,6 +42,7 @@ class MaterialOptions {
   var radioElements = '.radio > label > input[type=radio]';
 }
 
+@Injectable()
 class Material {
   // These options set what will be started by $.material.init()
   var options = new MaterialOptions();
@@ -49,7 +66,9 @@ class Material {
         element.files.forEach((dom.File file) {
           value += file.name + ', ';
         });
-        value = value.substring(0, value.length - 2);
+        if (value.length > 1) {
+          value = value.substring(0, value.length - 2);
+        }
         if (value.length > 0) {
           element.previousElementSibling.classes.remove('empty');
         } else {

@@ -1,20 +1,16 @@
-library ripple;
-
-import 'dart:html' as dom;
-import 'dart:async';
-import 'dart:math' as math;
-
-//import 'material.dart';
+// Copyright (C) 2015 Sergey Akopkokhyants.
+// https://github.com/akserg/angular.dart.material
+// All rights reserved.  Please see the LICENSE.md file.part of material;
+part of material;
 
 class Ripples {
   RegExp agentRegExp = new RegExp(r'Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini');
   dom.Element element;
-//  MaterialOptions options;
   dom.DivElement wrapper;
   dom.DivElement ripple;
   var rippleColor;
   
-  Ripples(this.element) { //, this.options) {
+  Ripples(this.element) {
     this.element.onMouseDown.listen(startRipplesHandler);
     this.element.onTouchStart.listen(startRipplesHandler);
   }
