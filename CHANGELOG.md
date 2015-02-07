@@ -2,7 +2,13 @@
 
 ##Features
 
-- Add Ripple effect support to button, images, navbar, dropdown-menu, nav-tabs
+Add Ripple effect support to:
+ 
+- button, 
+- images, 
+- navbar, 
+- dropdown-menu, 
+- nav-tabs
 
 #Version 0.3.0
 

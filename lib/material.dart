@@ -31,6 +31,7 @@ class MaterialModule extends Module {
     // Rippples elements
     bind(ButtonRipplesCompoent);
     bind(NavBarRipplesCompoent);
+    bind(NavTabRipplesCompoent);
   }
 }
 

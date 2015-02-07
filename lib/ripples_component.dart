@@ -5,13 +5,12 @@ part of material;
 
 /**
  * 
-      '.btn:not(.btn-link), ' + 
       '.card-image, ' + 
-      '.navbar a:not(.withoutripple), ' + 
       '.dropdown-menu a, ' + 
-      '.nav-tabs a:not(.withoutripple), ' + 
       '.withripple'
  */
+
+// '.btn:not(.btn-link), '
 @Decorator(selector: '.btn')
 class ButtonRipplesCompoent {
   ButtonRipplesCompoent(dom.Element element) {
@@ -21,11 +20,28 @@ class ButtonRipplesCompoent {
   }
 }
 
-@Decorator(selector: '.navbar')
-class NavBarRipplesCompoent {
-  NavBarRipplesCompoent(dom.Element element) {
-    if (!element.classes.contains('btn-link')) {
+// 'a:not(.withoutripple), '
+abstract class BaseNavRipplesCompoent {
+  BaseNavRipplesCompoent(dom.Element element) {
+    dom.ElementList<dom.AnchorElement> anchors = element.querySelectorAll('a');
+    var length = anchors.where((dom.AnchorElement el) {
+      return el.classes.contains('withoutripple');
+    }).toList().length;
+    //
+    if (length == 0) {
       new Ripples(element);
     }
   }
+}
+
+// '.navbar a:not(.withoutripple), ' 
+@Decorator(selector: '.navbar')
+class NavBarRipplesCompoent extends BaseNavRipplesCompoent {
+  NavBarRipplesCompoent(dom.Element element):super(element);
+}
+
+// '.nav-tabs a:not(.withoutripple), '
+@Decorator(selector: '.nav-tabs')
+class NavTabRipplesCompoent extends BaseNavRipplesCompoent {
+  NavTabRipplesCompoent(dom.Element element):super(element);
 }
