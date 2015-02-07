@@ -13,19 +13,23 @@ import "package:angular/angular.dart";
 part 'ripples.dart';
 part 'input_component.dart';
 part 'switch_component.dart';
+part 'ripples_component.dart';
 
 /**
  * Material Module.
  */
 class MaterialModule extends Module {
   MaterialModule() {
+    // Input element
     bind(InputComponent);
     bind(TextareaComponent);
     bind(SelectComponent);
+    // Switch elements
     bind(CheckboxCompoent);
     bind(ToggleButtonCompoent);
     bind(RadioButtonCompoent);
-    
+    // Rippples elements
+    bind(ButtonRipplesCompoent);
   }
 }
 
