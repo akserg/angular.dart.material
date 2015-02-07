@@ -3,8 +3,17 @@
 // All rights reserved.  Please see the LICENSE.md file.part of material;
 part of material;
 
-/*
-*/
+//************
+notmdproc(dom.Element obj) {
+  return !obj.dataset.containsKey('mdproc');
+}
+
+_isChar(dom.KeyboardEvent evt) {
+  if (evt.which > 0) {
+    return !evt.ctrlKey && !evt.metaKey && !evt.altKey && evt.which != 8 && evt.which != 9;
+  }
+  return false;
+}
 
 // '.checkbox input[type=checkbox]'
 @Decorator(selector: '.checkbox')
@@ -30,6 +39,12 @@ class FormControlReactiveComponent {
         el.classes.add('empty');
       } else {
         el.classes.remove('empty');
+      }
+    });
+    //
+    element.onKeyDown.listen((dom.KeyboardEvent evt) {
+      if(_isChar(evt)) {
+        element.classes.remove('empty');
       }
     });
   }
