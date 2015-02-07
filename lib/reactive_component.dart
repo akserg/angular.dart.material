@@ -5,18 +5,6 @@ part of material;
 
 /*
 dom.document.onChange.listen((dom.Event event) {
-  handle('.checkbox input[type=checkbox]', (dom.Element element) {
-    element.blur();
-  });
-  //
-  handle('.form-control', (element) {
-    if (element.value == '' && element.checkValidity()) {
-      element.classes.add('empty');
-    } else {
-      element.classes.remove('empty');
-    }
-  });
-  //
   var value = '';
   handle('.form-control-wrapper.fileinput [type=file]', (dom.FileUploadInputElement element) {
     element.files.forEach((dom.File file) {
@@ -44,5 +32,22 @@ class CheckboxReactiveCompoent {
        element.blur();
      });
    }
+  }
+}
+
+// '.form-control'
+@Decorator(selector: '.form-control')
+class FormControlReactiveCompoent {
+  // Just leave element without type because it can be 
+  // input, text area or selector elements
+  FormControlReactiveCompoent(dom.Element element) {
+    element.onChange.listen((dom.Event evt) {
+      var el = element;
+      if (el.value == '' && el.checkValidity()) {
+        el.classes.add('empty');
+      } else {
+        el.classes.remove('empty');
+      }
+    });
   }
 }

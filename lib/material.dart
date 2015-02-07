@@ -38,6 +38,7 @@ class MaterialModule extends Module {
     bind(WithRipplesCompoent);
     // Reactive components
     bind(CheckboxReactiveCompoent);
+    bind(FormControlReactiveCompoent);
   }
 }
 
