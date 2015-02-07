@@ -12,8 +12,7 @@ import "package:angular/angular.dart";
 
 part 'ripples.dart';
 part 'input_component.dart';
-part 'checkbox_component.dart';
-//part 'toggle_button.dart';
+part 'switch_component.dart';
 
 /**
  * Material Module.
@@ -25,6 +24,7 @@ class MaterialModule extends Module {
     bind(SelectComponent);
     bind(CheckboxCompoent);
     bind(ToggleButtonCompoent);
+    bind(RadioButtonCompoent);
     
   }
 }
