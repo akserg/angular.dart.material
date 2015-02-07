@@ -14,6 +14,7 @@ part 'ripples.dart';
 part 'input_component.dart';
 part 'switch_component.dart';
 part 'ripples_component.dart';
+part 'reactive_component.dart';
 
 /**
  * Material Module.
@@ -35,6 +36,8 @@ class MaterialModule extends Module {
     bind(DropDownRipplesCompoent);
     bind(CardImageRipplesCompoent);
     bind(WithRipplesCompoent);
+    // Reactive components
+    bind(CheckboxReactiveCompoent);
   }
 }
 
