@@ -3,12 +3,6 @@
 // All rights reserved.  Please see the LICENSE.md file.part of material;
 part of material;
 
-/**
- * 
-       + 
-      '.withripple'
- */
-
 // '.btn:not(.btn-link), '
 @Decorator(selector: '.btn')
 class ButtonRipplesCompoent {
@@ -60,5 +54,13 @@ class DropDownRipplesCompoent {
 class CardImageRipplesCompoent {
   CardImageRipplesCompoent(dom.Element element) {
     new Ripples(element);
+  }
+}
+
+// '.withripple'
+@Decorator(selector: '.withripple')
+  class WithRipplesCompoent {
+  WithRipplesCompoent(dom.Element element) {
+   new Ripples(element);
   }
 }
