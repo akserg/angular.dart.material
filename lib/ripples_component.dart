@@ -5,7 +5,7 @@ part of material;
 
 /**
  * 
-      '.card-image, ' + 
+       + 
       '.withripple'
  */
 
@@ -52,5 +52,13 @@ class DropDownRipplesCompoent {
    if (element.querySelector('a') != null) {
      new Ripples(element);
    }
+  }
+}
+
+// '.card-image, '
+@Decorator(selector: '.card-image')
+class CardImageRipplesCompoent {
+  CardImageRipplesCompoent(dom.Element element) {
+    new Ripples(element);
   }
 }
