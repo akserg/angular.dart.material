@@ -83,6 +83,10 @@ class FormControlWrapperReactiveComponent {
         }
         (element.previousElementSibling as dom.InputElement).value = value;
       });
+      //
+      element.onFocus.listen((dom.FocusEvent evt) {
+        element.classes.add('focus');
+      });
     }
   }
 }
