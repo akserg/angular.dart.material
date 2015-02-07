@@ -30,6 +30,7 @@ class MaterialModule extends Module {
     bind(RadioButtonCompoent);
     // Rippples elements
     bind(ButtonRipplesCompoent);
+    bind(NavBarRipplesCompoent);
   }
 }
 

@@ -21,12 +21,11 @@ class ButtonRipplesCompoent {
   }
 }
 
-/*
-ripples({String selector:null}) {
-    //$((selector) ? selector : this.options.withRipples).ripples();
-    dom.ElementList list = dom.document.querySelectorAll(selector != null ? selector : options.withRipples);
-    list.forEach((dom.Element el) {
-      new Ripples(el);
-    });
+@Decorator(selector: '.navbar')
+class NavBarRipplesCompoent {
+  NavBarRipplesCompoent(dom.Element element) {
+    if (!element.classes.contains('btn-link')) {
+      new Ripples(element);
+    }
   }
-*/
+}
