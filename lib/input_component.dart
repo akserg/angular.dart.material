@@ -5,11 +5,12 @@ part of material;
 
 // 'input.form-control, textarea.form-control, select.form-control'
 
-@Injectable()
-class BaseInputCompoent {
-  BaseInputCompoent(dom.Element element, NodeAttrs attrs) {
-    element.dataset['mdproc'] = 'true';
-    inputHelper(element);
+abstract class BaseInputCompoent {
+  BaseInputCompoent(dom.Element element) {
+    if (element.classes.contains('form-control')) {
+      element.dataset['mdproc'] = 'true';
+      inputHelper(element);
+    }
   }
   
   inputHelper(el) {
@@ -54,17 +55,17 @@ class BaseInputCompoent {
   }
 }
 
-@Decorator(selector: 'input.form-control')
+@Decorator(selector: 'input')// .form-control
 class InputComponent extends BaseInputCompoent {
-  InputComponent(dom.Element element, NodeAttrs attrs):super(element, attrs);
+  InputComponent(dom.Element element):super(element);
 }
 
-@Decorator(selector: 'textarea.form-control')
+@Decorator(selector: 'textarea')
 class TextareaComponent extends BaseInputCompoent {
-  TextareaComponent(dom.Element element, NodeAttrs attrs):super(element, attrs);
+  TextareaComponent(dom.Element element):super(element);
 }
 
-@Decorator(selector: 'select.form-control')
+@Decorator(selector: 'select')
 class SelectComponent extends BaseInputCompoent {
-  SelectComponent(dom.Element element, NodeAttrs attrs):super(element, attrs);
+  SelectComponent(dom.Element element):super(element);
 }
