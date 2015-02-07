@@ -51,6 +51,15 @@ class FormControlReactiveComponent {
     element.onPaste.listen((dom.Event event) {
       element.classes.remove('empty');
     });
+    //
+    element.onKeyUp.listen((dom.KeyboardEvent event) {
+      var el = element;
+      if (el.value == '' && el.checkValidity()) {
+        element.classes.add('empty');
+      } else {
+        element.classes.remove('empty');
+      }
+    });
   }
 }
 
