@@ -87,6 +87,10 @@ class FormControlWrapperReactiveComponent {
       element.onFocus.listen((dom.FocusEvent evt) {
         element.classes.add('focus');
       });
+      //
+      element.onBlur.listen((dom.FocusEvent evt) {
+        element.classes.remove('focus');
+      });
     }
   }
 }
