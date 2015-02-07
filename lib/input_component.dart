@@ -3,6 +3,24 @@
 // All rights reserved.  Please see the LICENSE.md file.part of material;
 part of material;
 
+// input.form-control
+@Component(selector: 'input', useShadowDom: false)
+class InputComponent extends BaseInputCompoent {
+  InputComponent(dom.Element element):super(element);
+}
+
+// textarea.form-control
+@Decorator(selector: 'textarea')
+class TextareaComponent extends BaseInputCompoent {
+  TextareaComponent(dom.Element element):super(element);
+}
+
+// select.form-control
+@Decorator(selector: 'select')
+class SelectComponent extends BaseInputCompoent {
+  SelectComponent(dom.Element element):super(element);
+}
+
 abstract class BaseInputCompoent {
   BaseInputCompoent(dom.Element element) {
     if (element.classes.contains('form-control') && notmdproc(element)) {
@@ -12,14 +30,11 @@ abstract class BaseInputCompoent {
   }
   
   inputHelper(el) {
-    if (!el.attributes.containsKey('data-hint') && !el.classes.contains('floating-label')) {
-      return;
-    }
-    
     // $this.wrap('<div class=form-control-wrapper></div>');
     dom.DivElement wrap = new dom.DivElement();
     wrap.classes.add('form-control-wrapper');
     el.parent.insertBefore(wrap, el);
+    el.remove();
     wrap.append(el);
     
     // $this.after('<span class=material-input></span>');
@@ -51,22 +66,4 @@ abstract class BaseInputCompoent {
       el.insertAdjacentElement('afterEnd', input);
     }
   }
-}
-
-// input.form-control
-@Component(selector: 'input', useShadowDom: false)
-class InputComponent extends BaseInputCompoent {
-  InputComponent(dom.Element element):super(element);
-}
-
-// textarea.form-control
-@Decorator(selector: 'textarea')
-class TextareaComponent extends BaseInputCompoent {
-  TextareaComponent(dom.Element element):super(element);
-}
-
-// select.form-control
-@Decorator(selector: 'select')
-class SelectComponent extends BaseInputCompoent {
-  SelectComponent(dom.Element element):super(element);
 }
