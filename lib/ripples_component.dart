@@ -6,7 +6,6 @@ part of material;
 /**
  * 
       '.card-image, ' + 
-      '.dropdown-menu a, ' + 
       '.withripple'
  */
 
@@ -44,4 +43,14 @@ class NavBarRipplesCompoent extends BaseNavRipplesCompoent {
 @Decorator(selector: '.nav-tabs')
 class NavTabRipplesCompoent extends BaseNavRipplesCompoent {
   NavTabRipplesCompoent(dom.Element element):super(element);
+}
+
+// '.dropdown-menu a, '
+@Decorator(selector: '.dropdown-menu')
+class DropDownRipplesCompoent {
+  DropDownRipplesCompoent(dom.Element element) {
+   if (element.querySelector('a') != null) {
+     new Ripples(element);
+   }
+  }
 }
