@@ -8,7 +8,7 @@ part of material;
 class CheckboxComponent {
   CheckboxComponent(dom.Element element) {
     dom.CheckboxInputElement checkbox = element.querySelector('label > input[type=checkbox]');
-    if (checkbox != null){
+    if (checkbox != null) {
       checkbox.dataset['mdproc'] = 'true';
       checkbox.insertAdjacentHtml('afterEnd', '<span class=ripple></span><span class=check></span>');
     }
@@ -20,7 +20,7 @@ class CheckboxComponent {
 class ToggleButtonComponent {
   ToggleButtonComponent(dom.Element element) {
     dom.CheckboxInputElement checkbox = element.querySelector('label > input[type=checkbox]');
-    if (checkbox != null){
+    if (checkbox != null) {
       checkbox.dataset['mdproc'] = 'true';
       checkbox.insertAdjacentHtml('afterEnd', '<span class=toggle></span>');
     }
@@ -31,10 +31,10 @@ class ToggleButtonComponent {
 @Decorator(selector: '.radio')
 class RadioButtonComponent {
   RadioButtonComponent(dom.Element element) {
-    dom.RadioButtonInputElement checkbox = element.querySelector('label > input[type=radio]');
-    if (checkbox != null){
-      checkbox.dataset['mdproc'] = 'true';
-      checkbox.insertAdjacentHtml('afterEnd', '<span class=circle></span><span class=check></span>');
+    dom.RadioButtonInputElement radio = element.querySelector('label > input[type=radio]');
+    if (radio != null) {
+      radio.dataset['mdproc'] = 'true';
+      radio.insertAdjacentHtml('afterEnd', '<span class=circle></span><span class=check></span>');
     }
   }
 }

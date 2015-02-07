@@ -3,11 +3,9 @@
 // All rights reserved.  Please see the LICENSE.md file.part of material;
 part of material;
 
-// 'input.form-control, textarea.form-control, select.form-control'
-
 abstract class BaseInputCompoent {
   BaseInputCompoent(dom.Element element) {
-    if (element.classes.contains('form-control')) {
+    if (element.classes.contains('form-control') && notmdproc(element)) {
       element.dataset['mdproc'] = 'true';
       inputHelper(element);
     }
@@ -55,16 +53,19 @@ abstract class BaseInputCompoent {
   }
 }
 
-@Decorator(selector: 'input')// .form-control
+// input.form-control
+@Component(selector: 'input', useShadowDom: false)
 class InputComponent extends BaseInputCompoent {
   InputComponent(dom.Element element):super(element);
 }
 
+// textarea.form-control
 @Decorator(selector: 'textarea')
 class TextareaComponent extends BaseInputCompoent {
   TextareaComponent(dom.Element element):super(element);
 }
 
+// select.form-control
 @Decorator(selector: 'select')
 class SelectComponent extends BaseInputCompoent {
   SelectComponent(dom.Element element):super(element);

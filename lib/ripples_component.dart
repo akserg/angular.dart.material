@@ -16,14 +16,11 @@ class ButtonRipplesComponent {
 // 'a:not(.withoutripple), '
 abstract class BaseNavRipplesComponent {
   BaseNavRipplesComponent(dom.Element element) {
-    dom.ElementList<dom.AnchorElement> anchors = element.querySelectorAll('a');
-    var length = anchors.where((dom.AnchorElement el) {
-      return el.classes.contains('withoutripple');
-    }).toList().length;
-    //
-    if (length == 0) {
-      new Ripples(element);
-    }
+    element.querySelectorAll('a').forEach((dom.AnchorElement el){
+      if (!el.classes.contains('withoutripple')) {
+        new Ripples(el);
+      }
+    });
   }
 }
 
@@ -43,9 +40,9 @@ class NavTabRipplesComponent extends BaseNavRipplesComponent {
 @Decorator(selector: '.dropdown-menu')
 class DropDownRipplesComponent {
   DropDownRipplesComponent(dom.Element element) {
-   if (element.querySelector('a') != null) {
-     new Ripples(element);
-   }
+    element.querySelectorAll('a').forEach((dom.AnchorElement el){
+      new Ripples(el);
+    });
   }
 }
 

@@ -3,11 +3,6 @@
 // All rights reserved.  Please see the LICENSE.md file.part of material;
 part of material;
 
-//************
-notmdproc(dom.Element obj) {
-  return !obj.dataset.containsKey('mdproc');
-}
-
 _isChar(dom.KeyboardEvent evt) {
   if (evt.which > 0) {
     return !evt.ctrlKey && !evt.metaKey && !evt.altKey && evt.which != 8 && evt.which != 9;
@@ -19,11 +14,11 @@ _isChar(dom.KeyboardEvent evt) {
 @Decorator(selector: '.checkbox')
 class CheckboxReactiveComponent {
   CheckboxReactiveComponent(dom.Element element) {
-   if (element.querySelector('input[type=checkbox]') != null) {
-     element.onChange.listen((dom.Event evt) {
+   element.querySelectorAll('input[type=checkbox]').forEach((dom.CheckboxInputElement checkbox) {
+     checkbox.onChange.listen((dom.Event evt) {
        element.blur();
      });
-   }
+   });
   }
 }
 
@@ -67,30 +62,30 @@ class FormControlReactiveComponent {
 @Decorator(selector: '.form-control-wrapper.fileinput')
 class FormControlWrapperReactiveComponent {
   FormControlWrapperReactiveComponent(dom.Element element) {
-    if (element is dom.FileUploadInputElement) {
-      element.onChange.listen((dom.Event evt) {
+    element.querySelectorAll('[type=file]').forEach((dom.FileUploadInputElement el) {
+      el.onChange.listen((dom.Event evt) {
         var value = '';
-        element.files.forEach((dom.File file) {
+        el.files.forEach((dom.File file) {
           value += file.name + ', ';
         });
         if (value.length > 1) {
           value = value.substring(0, value.length - 2);
         }
         if (value.length > 0) {
-          element.previousElementSibling.classes.remove('empty');
+          el.previousElementSibling.classes.remove('empty');
         } else {
-          element.previousElementSibling.classes.add('empty');
+          el.previousElementSibling.classes.add('empty');
         }
-        (element.previousElementSibling as dom.InputElement).value = value;
+        (el.previousElementSibling as dom.InputElement).value = value;
       });
       //
-      element.onFocus.listen((dom.FocusEvent evt) {
-        element.classes.add('focus');
+      el.onFocus.listen((dom.FocusEvent evt) {
+        el.classes.add('focus');
       });
       //
-      element.onBlur.listen((dom.FocusEvent evt) {
-        element.classes.remove('focus');
+      el.onBlur.listen((dom.FocusEvent evt) {
+        el.classes.remove('focus');
       });
-    }
+    });
   }
 }
