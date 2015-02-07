@@ -5,8 +5,8 @@ part of material;
 
 // '.btn:not(.btn-link), '
 @Decorator(selector: '.btn')
-class ButtonRipplesCompoent {
-  ButtonRipplesCompoent(dom.Element element) {
+class ButtonRipplesComponent {
+  ButtonRipplesComponent(dom.Element element) {
     if (!element.classes.contains('btn-link')) {
       new Ripples(element);
     }
@@ -14,8 +14,8 @@ class ButtonRipplesCompoent {
 }
 
 // 'a:not(.withoutripple), '
-abstract class BaseNavRipplesCompoent {
-  BaseNavRipplesCompoent(dom.Element element) {
+abstract class BaseNavRipplesComponent {
+  BaseNavRipplesComponent(dom.Element element) {
     dom.ElementList<dom.AnchorElement> anchors = element.querySelectorAll('a');
     var length = anchors.where((dom.AnchorElement el) {
       return el.classes.contains('withoutripple');
@@ -29,20 +29,20 @@ abstract class BaseNavRipplesCompoent {
 
 // '.navbar a:not(.withoutripple), ' 
 @Decorator(selector: '.navbar')
-class NavBarRipplesCompoent extends BaseNavRipplesCompoent {
-  NavBarRipplesCompoent(dom.Element element):super(element);
+class NavBarRipplesComponent extends BaseNavRipplesComponent {
+  NavBarRipplesComponent(dom.Element element):super(element);
 }
 
 // '.nav-tabs a:not(.withoutripple), '
 @Decorator(selector: '.nav-tabs')
-class NavTabRipplesCompoent extends BaseNavRipplesCompoent {
-  NavTabRipplesCompoent(dom.Element element):super(element);
+class NavTabRipplesComponent extends BaseNavRipplesComponent {
+  NavTabRipplesComponent(dom.Element element):super(element);
 }
 
 // '.dropdown-menu a, '
 @Decorator(selector: '.dropdown-menu')
-class DropDownRipplesCompoent {
-  DropDownRipplesCompoent(dom.Element element) {
+class DropDownRipplesComponent {
+  DropDownRipplesComponent(dom.Element element) {
    if (element.querySelector('a') != null) {
      new Ripples(element);
    }
@@ -51,16 +51,16 @@ class DropDownRipplesCompoent {
 
 // '.card-image, '
 @Decorator(selector: '.card-image')
-class CardImageRipplesCompoent {
-  CardImageRipplesCompoent(dom.Element element) {
+class CardImageRipplesComponent {
+  CardImageRipplesComponent(dom.Element element) {
     new Ripples(element);
   }
 }
 
 // '.withripple'
 @Decorator(selector: '.withripple')
-  class WithRipplesCompoent {
-  WithRipplesCompoent(dom.Element element) {
+  class WithRipplesComponent {
+  WithRipplesComponent(dom.Element element) {
    new Ripples(element);
   }
 }

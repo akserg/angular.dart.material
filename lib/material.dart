@@ -26,19 +26,20 @@ class MaterialModule extends Module {
     bind(TextareaComponent);
     bind(SelectComponent);
     // Switch elements
-    bind(CheckboxCompoent);
-    bind(ToggleButtonCompoent);
-    bind(RadioButtonCompoent);
+    bind(CheckboxComponent);
+    bind(ToggleButtonComponent);
+    bind(RadioButtonComponent);
     // Rippples elements
-    bind(ButtonRipplesCompoent);
-    bind(NavBarRipplesCompoent);
-    bind(NavTabRipplesCompoent);
-    bind(DropDownRipplesCompoent);
-    bind(CardImageRipplesCompoent);
-    bind(WithRipplesCompoent);
+    bind(ButtonRipplesComponent);
+    bind(NavBarRipplesComponent);
+    bind(NavTabRipplesComponent);
+    bind(DropDownRipplesComponent);
+    bind(CardImageRipplesComponent);
+    bind(WithRipplesComponent);
     // Reactive components
-    bind(CheckboxReactiveCompoent);
-    bind(FormControlReactiveCompoent);
+    bind(CheckboxReactiveComponent);
+    bind(FormControlReactiveComponent);
+    bind(FormControlWrapperReactiveComponent);
   }
 }
 

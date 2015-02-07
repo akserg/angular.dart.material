@@ -5,8 +5,8 @@ part of material;
 
 // '.checkbox > label > input[type=checkbox]'
 @Decorator(selector: '.checkbox')
-class CheckboxCompoent {
-  CheckboxCompoent(dom.Element element) {
+class CheckboxComponent {
+  CheckboxComponent(dom.Element element) {
     dom.CheckboxInputElement checkbox = element.querySelector('label > input[type=checkbox]');
     if (checkbox != null){
       checkbox.dataset['mdproc'] = 'true';
@@ -17,8 +17,8 @@ class CheckboxCompoent {
 
 // '.togglebutton > label > input[type=checkbox]'
 @Decorator(selector: '.togglebutton')
-class ToggleButtonCompoent {
-  ToggleButtonCompoent(dom.Element element) {
+class ToggleButtonComponent {
+  ToggleButtonComponent(dom.Element element) {
     dom.CheckboxInputElement checkbox = element.querySelector('label > input[type=checkbox]');
     if (checkbox != null){
       checkbox.dataset['mdproc'] = 'true';
@@ -29,8 +29,8 @@ class ToggleButtonCompoent {
 
 // '.radio > label > input[type=radio]'
 @Decorator(selector: '.radio')
-class RadioButtonCompoent {
-  RadioButtonCompoent(dom.Element element) {
+class RadioButtonComponent {
+  RadioButtonComponent(dom.Element element) {
     dom.RadioButtonInputElement checkbox = element.querySelector('label > input[type=radio]');
     if (checkbox != null){
       checkbox.dataset['mdproc'] = 'true';

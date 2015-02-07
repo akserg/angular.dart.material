@@ -4,29 +4,12 @@
 part of material;
 
 /*
-dom.document.onChange.listen((dom.Event event) {
-  var value = '';
-  handle('.form-control-wrapper.fileinput [type=file]', (dom.FileUploadInputElement element) {
-    element.files.forEach((dom.File file) {
-      value += file.name + ', ';
-    });
-    if (value.length > 1) {
-      value = value.substring(0, value.length - 2);
-    }
-    if (value.length > 0) {
-      element.previousElementSibling.classes.remove('empty');
-    } else {
-      element.previousElementSibling.classes.add('empty');
-    }
-    (element.previousElementSibling as dom.InputElement).value = value;
-  });
-});
 */
 
 // '.checkbox input[type=checkbox]'
 @Decorator(selector: '.checkbox')
-class CheckboxReactiveCompoent {
-  CheckboxReactiveCompoent(dom.Element element) {
+class CheckboxReactiveComponent {
+  CheckboxReactiveComponent(dom.Element element) {
    if (element.querySelector('input[type=checkbox]') != null) {
      element.onChange.listen((dom.Event evt) {
        element.blur();
@@ -37,10 +20,10 @@ class CheckboxReactiveCompoent {
 
 // '.form-control'
 @Decorator(selector: '.form-control')
-class FormControlReactiveCompoent {
+class FormControlReactiveComponent {
   // Just leave element without type because it can be 
   // input, text area or selector elements
-  FormControlReactiveCompoent(dom.Element element) {
+  FormControlReactiveComponent(dom.Element element) {
     element.onChange.listen((dom.Event evt) {
       var el = element;
       if (el.value == '' && el.checkValidity()) {
@@ -49,5 +32,29 @@ class FormControlReactiveCompoent {
         el.classes.remove('empty');
       }
     });
+  }
+}
+
+// '.form-control-wrapper.fileinput [type=file]'
+@Decorator(selector: '.form-control-wrapper.fileinput')
+class FormControlWrapperReactiveComponent {
+  FormControlWrapperReactiveComponent(dom.Element element) {
+    if (element is dom.FileUploadInputElement) {
+      element.onChange.listen((dom.Event evt) {
+        var value = '';
+        element.files.forEach((dom.File file) {
+          value += file.name + ', ';
+        });
+        if (value.length > 1) {
+          value = value.substring(0, value.length - 2);
+        }
+        if (value.length > 0) {
+          element.previousElementSibling.classes.remove('empty');
+        } else {
+          element.previousElementSibling.classes.add('empty');
+        }
+        (element.previousElementSibling as dom.InputElement).value = value;
+      });
+    }
   }
 }
