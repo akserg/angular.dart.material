@@ -57,35 +57,3 @@ class FormControlReactiveComponent {
     });
   }
 }
-
-// '.form-control-wrapper.fileinput [type=file]'
-@Decorator(selector: '.form-control-wrapper.fileinput')
-class FormControlWrapperReactiveComponent {
-  FormControlWrapperReactiveComponent(dom.Element element) {
-    element.querySelectorAll('[type=file]').forEach((dom.FileUploadInputElement el) {
-      el.onChange.listen((dom.Event evt) {
-        var value = '';
-        el.files.forEach((dom.File file) {
-          value += file.name + ', ';
-        });
-        if (value.length > 1) {
-          value = value.substring(0, value.length - 2);
-        }
-        if (value.length > 0) {
-          el.previousElementSibling.classes.remove('empty');
-        } else {
-          el.previousElementSibling.classes.add('empty');
-        }
-        (el.previousElementSibling as dom.InputElement).value = value;
-      });
-      //
-      el.onFocus.listen((dom.FocusEvent evt) {
-        el.classes.add('focus');
-      });
-      //
-      el.onBlur.listen((dom.FocusEvent evt) {
-        el.classes.remove('focus');
-      });
-    });
-  }
-}

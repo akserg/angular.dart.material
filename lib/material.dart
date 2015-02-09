@@ -38,10 +38,9 @@ class MaterialModule extends Module {
     // Reactive components
     bind(CheckboxReactiveComponent);
     bind(FormControlReactiveComponent);
-    bind(FormControlWrapperReactiveComponent);
   }
 }
 
-notmdproc(dom.Element obj) {
+_notmdproc(dom.Element obj) {
   return !obj.dataset.containsKey('mdproc');
 }
