@@ -5,6 +5,7 @@ import 'dart:html' as dom;
 import 'package:angular/application_factory.dart';
 import 'package:logging/logging.dart';
 import 'package:angular/angular.dart';
+import 'package:angular_ui/angular_ui.dart';
 import 'package:angular_material/material.dart';
 
 main() {
@@ -17,6 +18,8 @@ main() {
   new Logger("Material")..level = Level.FINER;
 
   applicationFactory()
+  	.addModule(new AngularUIModule())
+  	.addModule(new MaterialModule())
     .addModule(new DemoModule())
     .run();
 }
@@ -25,7 +28,5 @@ main() {
  * Demo Module
  */
 class DemoModule extends Module {
-  DemoModule() {
-    install(new MaterialModule());
-  }
+  DemoModule() {}
 }
