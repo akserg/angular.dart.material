@@ -81,7 +81,7 @@ class Ripples {
   // Get the new size based on the element height/width and the ripple width
   double getNewSize() {
     // return (Math.max($element.outerWidth(), $element.outerHeight()) / $ripple.outerWidth()) * 2.5;
-    return (math.max(element.clientWidth, element.clientHeight) / ripple.clientWidth) * 2.5;
+    return (math.max(element.offsetWidth, element.offsetHeight) / ripple.offsetWidth) * 2.5;
   }
   
   // Get the relX
@@ -166,6 +166,8 @@ class Ripples {
       ripple.classes.add("ripple-out");
     } else {
 //      ripple.animate({"opacity": 0}, 100)., function() {
+      dom.AnimationPlayer player = ripple.animate({"opacity": 0}, 100);
+      player.play();
       ripple.dispatchEvent(new dom.Event('transitionend'));
 //        });
     }
@@ -194,14 +196,15 @@ class Ripples {
       ripple.dataset["animating"] = "on";
       ripple.dataset["mousedown"] = "on";
     } else {
-//      ripple.animate({
-//          "width": Math.max($element.outerWidth(), $element.outerHeight()) * 2,
-//          "height": Math.max($element.outerWidth(), $element.outerHeight()) * 2,
-//          "margin-left": Math.max($element.outerWidth(), $element.outerHeight()) * (-1),
-//          "margin-top": Math.max($element.outerWidth(), $element.outerHeight()) * (-1),
-//          "opacity": 0.2
-//        }, 500);
+      dom.AnimationPlayer player = ripple.animate({
+          "width": math.max(element.offsetWidth, element.offsetHeight) * 2,
+          "height": math.max(element.offsetWidth, element.offsetHeight) * 2,
+          "margin-left": math.max(element.offsetWidth, element.offsetHeight) * (-1),
+          "margin-top": math.max(element.offsetWidth, element.offsetHeight) * (-1),
+          "opacity": 0.2
+        }, 500);
 //      , function() {
+      player.play();
         ripple.dispatchEvent(new dom.Event("transitionend"));
 //      });
     }
