@@ -1,3 +1,9 @@
+#Version 0.6.0
+
+#Bug fixes
+
+- Center point of ripples is incorrect
+
 #Version 0.5.0
 
 ##Features
