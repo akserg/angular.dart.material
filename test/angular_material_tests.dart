@@ -12,7 +12,7 @@ import 'package:angular/core/module_internal.dart';
 import 'package:angular/mock/module.dart';
 import 'package:angular/mock/test_injection.dart';
 
-import 'package:angular_material/material.dart';
+import 'package:angular_material/material_module.dart';
 
 part 'unit/ripple_test.dart';
 part 'unit/material_test.dart';

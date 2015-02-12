@@ -6,7 +6,7 @@ import 'package:angular/application_factory.dart';
 import 'package:logging/logging.dart';
 import 'package:angular/angular.dart';
 import 'package:angular_ui/angular_ui.dart';
-import 'package:angular_material/material.dart';
+import 'package:angular_material/material_module.dart';
 
 main() {
   hierarchicalLoggingEnabled = true;

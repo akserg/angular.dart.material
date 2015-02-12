@@ -30,23 +30,16 @@ class Ripples {
       this.element.append(wrapper);
     }
     
-    // Get relY and relX positions
-    var relY = getRelY(event);
-    var relX = getRelX(event);
-    
-    // If relY and/or relX are false, return the event
-    if (relY == null || relX == null) {
-      return;
-    }
+    Position position = getClickPosition(event);
     
     // Get the ripple color
-    rippleColor = getRipplesColor(element);
+    rippleColor = getRipplesColor();
     
     // Create the ripple element
     ripple = new dom.DivElement()
     ..classes.add("ripple")
-    ..style.left = relX
-    ..style.top = relY
+    ..style.left = "${position.x}px"
+    ..style.top = "${position.y}px"
     ..style.backgroundColor = rippleColor;
     
     // Append the ripple to the wrapper
@@ -79,49 +72,30 @@ class Ripples {
   }
   
   // Get the new size based on the element height/width and the ripple width
-  double getNewSize() {
-    // return (Math.max($element.outerWidth(), $element.outerHeight()) / $ripple.outerWidth()) * 2.5;
-    return (math.max(element.offsetWidth, element.offsetHeight) / ripple.offsetWidth) * 2.5;
+  String getNewSize() {
+    return ((math.max(element.offsetWidth, element.offsetHeight) / ripple.offsetWidth) * 2.5).toString();
   }
   
-  // Get the relX
-  dynamic getRelX(dom.Event event) {
-    var wrapperOffset = wrapper.offset;
-
-    if (!isTouch()) {
-      // Get the mouse position relative to the ripple wrapper
-      return ((event as dom.MouseEvent).page.x - wrapperOffset.left).toString();
-    } else {
-      // Make sure the user is using only one finger and then get the touch
-      // position relative to the ripple wrapper
-      if ((event as dom.TouchEvent).touches.length != 1) {
-        return ((event as dom.TouchEvent).touches[0].page.x - wrapperOffset.left).toString();
-      }
-
-      return null;
-    }
+  getClickPosition(dom.MouseEvent e) {
+    Position position = getPosition(wrapper);
+    position.x = e.client.x - position.x;
+    position.y = e.client.y - position.y;
+    return position;
   }
-  
-  // Get the relY
-  String getRelY(dom.Event event) {
-    var wrapperOffset = wrapper.offset;
-
-    if (!isTouch()) {
-      // Get the mouse position relative to the ripple wrapper
-      return ((event as dom.MouseEvent).page.y - wrapperOffset.top).toString();
-    } else {
-      // Make sure the user is using only one finger and then get the touch
-      // position relative to the ripple wrapper
-      if ((event as dom.TouchEvent).touches.length != 1) {
-        return ((event as dom.TouchEvent).touches[0].page.y - wrapperOffset.top).toString();
-      }
-
-      return null;
+   
+  getPosition(dom.Element element) {
+    Position position = new Position(0, 0);
+        
+    while (element != null) {
+      position.x += (element.offsetLeft - element.scrollLeft + element.clientLeft);
+      position.y += (element.offsetTop - element.scrollTop + element.clientTop);
+      element = element.offsetParent;
     }
+    return position;
   }
   
   // Get the ripple color
-  getRipplesColor(dom.Element element) {
+  getRipplesColor() {
     var color = element.dataset.containsKey("ripple-color") ? element.dataset["ripple-color"] : element.getComputedStyle(null).color;
 
     return color;
@@ -159,17 +133,11 @@ class Ripples {
   
   // Turn off the ripple effect
   rippleOut() {
-    // TODO: Switch off animation
-    //ripple.off();
-
     if (hasTransitionSupport()) {
       ripple.classes.add("ripple-out");
     } else {
-//      ripple.animate({"opacity": 0}, 100)., function() {
-      dom.AnimationPlayer player = ripple.animate({"opacity": 0}, 100);
-      player.play();
+      ripple.animate({"opacity": 0}, 100).play();
       ripple.dispatchEvent(new dom.Event('transitionend'));
-//        });
     }
 
     ripple.onTransitionEnd.listen(transitionEndHandler);
@@ -179,13 +147,13 @@ class Ripples {
   }
   
   transitionEndHandler(dom.Event event) {
-    ripple.remove();
+//    ripple.remove();
   }
     
   
   // Turn on the ripple effect
   rippleOn() {
-    var size = getNewSize().toString();
+    var size = getNewSize();
 
     if (hasTransitionSupport()) {
       ripple.style.setProperty("-ms-transform", "scale(${size})");
@@ -196,17 +164,21 @@ class Ripples {
       ripple.dataset["animating"] = "on";
       ripple.dataset["mousedown"] = "on";
     } else {
-      dom.AnimationPlayer player = ripple.animate({
-          "width": math.max(element.offsetWidth, element.offsetHeight) * 2,
-          "height": math.max(element.offsetWidth, element.offsetHeight) * 2,
-          "margin-left": math.max(element.offsetWidth, element.offsetHeight) * (-1),
-          "margin-top": math.max(element.offsetWidth, element.offsetHeight) * (-1),
-          "opacity": 0.2
-        }, 500);
-//      , function() {
-      player.play();
-        ripple.dispatchEvent(new dom.Event("transitionend"));
-//      });
+      ripple.animate({
+        "width": math.max(element.offsetWidth, element.offsetHeight) * 2,
+        "height": math.max(element.offsetWidth, element.offsetHeight) * 2,
+        "margin-left": math.max(element.offsetWidth, element.offsetHeight) * (-1),
+        "margin-top": math.max(element.offsetWidth, element.offsetHeight) * (-1),
+        "opacity": 0.2
+      }, 500).play();
+      ripple.dispatchEvent(new dom.Event("transitionend"));
     }
   }
+}
+
+class Position {
+  int x;
+  int y;
+
+  Position (this.x, this.y);
 }
