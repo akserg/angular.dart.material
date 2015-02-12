@@ -1,1 +1,1 @@
-start "Server" http-server build/web
+start "Server" http-server ./ -a localhost 
