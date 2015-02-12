@@ -8,6 +8,9 @@ Inspired by *Federico Zivolo* implementation of [Bootstrap Material Design](http
 This Bootstrap theme is an easy way to use the new [Material Design guidelines by Google](http://www.google.com/design/spec/material-design/introduction.html) in your Bootstrap 3 based application.
 Just include the theme, after the Bootstrap CSS and include the module in your Angular Dart project at the end of your document (just before the `</body>` tag), and everything will be converted to Material Design (Paper) style.
 
+Check out [the Bootstrap elements at this link](http://akserg.github.io/angular.dart.material/build/web/index.html).
+                                  
+
 #### material-wfont.css or material.css?
 
 The only difference is that `material-wfont.css` has the Google web fonts included.
@@ -42,7 +45,6 @@ Add `.btn-raised` to a button to add a permanent shadow to it.
 ### Inputs
 
 Add `.floating-label` to an input field with a `placeholder` to transform the placeholder in a floating label.
-
 Add `data-hint="some hint"` to show an hint under the input when the user focus it.
 
 Remember to use the proper HTML markup to get radio and checkboxes styled correctly (choose between *radio* or *checkbox*):
