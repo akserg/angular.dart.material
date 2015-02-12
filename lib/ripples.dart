@@ -30,37 +30,38 @@ class Ripples {
       this.element.append(wrapper);
     }
     
-    Position position = getClickPosition(event);
-    
-    // Get the ripple color
-    rippleColor = getRipplesColor();
-    
-    // Create the ripple element
-    ripple = new dom.DivElement()
-    ..classes.add("ripple")
-    ..style.left = "${position.x}px"
-    ..style.top = "${position.y}px"
-    ..style.backgroundColor = rippleColor;
-    
-    // Append the ripple to the wrapper
-    wrapper.append(ripple);
-    
-    // Make sure the ripple has the styles applied (ugly hack but it works)
-    // (function() { return window.getComputedStyle($ripple[0]).opacity; })();
-    ripple.getComputedStyle(null);
-    
-    // Turn on the ripple animation
-    rippleOn();
-    
-    // Call the rippleEnd function when the transition "on" ends
-    new Timer(new Duration(milliseconds: 500), () {
-      rippleEnd();
-    });
-    
-    // Detect when the user leaves the element
-    element.onMouseUp.listen(endRipplesHandler);
-    element.onMouseLeave.listen(endRipplesHandler);
-    element.onTouchEnd.listen(endRipplesHandler);
+    Position position = getClickOrTouchPosition(event);
+    if (position != null) {
+      // Get the ripple color
+      rippleColor = getRipplesColor();
+      
+      // Create the ripple element
+      ripple = new dom.DivElement()
+      ..classes.add("ripple")
+      ..style.left = "${position.x}px"
+      ..style.top = "${position.y}px"
+      ..style.backgroundColor = rippleColor;
+      
+      // Append the ripple to the wrapper
+      wrapper.append(ripple);
+      
+      // Make sure the ripple has the styles applied (ugly hack but it works)
+      // (function() { return window.getComputedStyle($ripple[0]).opacity; })();
+      ripple.getComputedStyle(null);
+      
+      // Turn on the ripple animation
+      rippleOn();
+      
+      // Call the rippleEnd function when the transition "on" ends
+      new Timer(new Duration(milliseconds: 500), () {
+        rippleEnd();
+      });
+      
+      // Detect when the user leaves the element
+      element.onMouseUp.listen(endRipplesHandler);
+      element.onMouseLeave.listen(endRipplesHandler);
+      element.onTouchEnd.listen(endRipplesHandler);
+    }
   }
   
   endRipplesHandler(dom.Event event) {
@@ -76,10 +77,21 @@ class Ripples {
     return ((math.max(element.offsetWidth, element.offsetHeight) / ripple.offsetWidth) * 2.5).toString();
   }
   
-  getClickPosition(dom.MouseEvent e) {
-    Position position = getPosition(wrapper);
-    position.x = e.client.x - position.x;
-    position.y = e.client.y - position.y;
+  getClickOrTouchPosition(dom.Event e) {
+    Position position;
+    if (isTouch()) {
+      // Make sure the user is using only one finger and then get the touch
+      // position relative to the ripple wrapper
+      if ((e as dom.TouchEvent).touches.length != 1) {
+        position = getPosition(wrapper);
+        position.x = (e as dom.TouchEvent).touches[0].page.x - position.x;
+        position.y = (e as dom.TouchEvent).touches[0].page.y - position.y;
+      }
+    } else {
+      position = getPosition(wrapper);
+      position.x = (e as dom.MouseEvent).client.x - position.x;
+      position.y = (e as dom.MouseEvent).client.y - position.y;
+    }
     return position;
   }
    
@@ -147,7 +159,7 @@ class Ripples {
   }
   
   transitionEndHandler(dom.Event event) {
-//    ripple.remove();
+    ripple.remove();
   }
     
   

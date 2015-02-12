@@ -1,10 +1,11 @@
-#Version 0.6.0
+#Version 0.6
 
 #Bug fixes
 
 - Center point of ripples is incorrect
+- Restore touch support
 
-#Version 0.5.0
+#Version 0.5
 
 ##Features
 
@@ -17,7 +18,7 @@
 - Add handler on focus to file input elements marked form-control-wrapper class
 - Add handler on blur to file input elements marked form-control-wrapper class
 
-#Version 0.4.0
+#Version 0.4
 
 ##Features
 
@@ -29,7 +30,7 @@ Add Ripple effect support to:
 - dropdown-menu, 
 - nav-tabs
 
-#Version 0.3.0
+#Version 0.3
 
 ##Features
 
@@ -37,7 +38,7 @@ Add Ripple effect support to:
 - ToggleButtonElement
 - RadioButtonElement
 
-#Version 0.2.0
+#Version 0.2
 
 ##Features
 
@@ -45,7 +46,7 @@ Add Ripple effect support to:
 - TextareaElement
 - SelectElement
 
-#Version 0.1.0
+#Version 0.1
 
 ##Features
 
