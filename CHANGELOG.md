@@ -4,6 +4,7 @@
 
 - Center point of ripples is incorrect
 - Restore touch support
+- Material doesn't work on Tabs and Pills
 
 #Version 0.5
 
