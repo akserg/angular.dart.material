@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app>
     <!-- MEMO: update me with `git checkout gh-pages && git merge master && git push origin gh-pages` -->
     <head>
         <meta charset="utf-8">
@@ -7,41 +7,10 @@
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
         <link href="css/material-wfont.css" rel="stylesheet">
         <link href="css/ripples.css" rel="stylesheet">
+        <link href="css/main.css" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <style>
-            body{padding-top:50px}#banner{border-bottom:none}.page-header h1{font-size:4em}.bs-docs-section{margin-top:8em}.bs-component{position:relative}.bs-component .modal{position:relative;top:auto;right:auto;left:auto;bottom:auto;z-index:1;display:block}.bs-component .modal-dialog{width:90%}.bs-component .popover{position:relative;display:inline-block;width:220px;margin:20px}#source-button{position:absolute;top:0;right:0;z-index:100;font-weight:bold;padding: 5px 10px;}.progress{margin-bottom:10px}footer{margin:5em 0}footer li{float:left;margin-right:1.5em;margin-bottom:1.5em}footer p{clear:left;margin-bottom:0}.splash{padding:4em 0 0;background-color:#141d27;color:#fff;text-align:center}.splash h1{font-size:4em}.splash #social{margin:2em 0}.splash .alert{margin:2em 0}.section-tout{padding:4em 0 3em;border-bottom:1px solid rgba(0,0,0,0.05);background-color:#eaf1f1}.section-tout .fa{margin-right:.5em}.section-tout p{margin-bottom:3em}.section-preview{padding:4em 0 4em}.section-preview .preview{margin-bottom:4em;background-color:#eaf1f1}.section-preview .preview .image{position:relative}.section-preview .preview .image:before{box-shadow:inset 0 0 0 1px rgba(0,0,0,0.1);position:absolute;top:0;left:0;width:100%;height:100%;content:"";pointer-events:none}.section-preview .preview .options{padding:1em 2em 2em;border:1px solid rgba(0,0,0,0.05);border-top:none;text-align:center}.section-preview .preview .options p{margin-bottom:2em}.section-preview .dropdown-menu{text-align:left}.section-preview .lead{margin-bottom:2em}@media (max-width:767px){.section-preview .image img{width:100%}}.sponsor{text-align:center}.sponsor a:hover{text-decoration:none}@media (max-width:767px){#banner{margin-bottom:2em;text-align:center}}
-            .infobox .btn-sup { color: rgba(0,0,0,0.5); font-weight: bold; font-size: 15px; line-height: 30px; }
-            .infobox .btn-sup img { opacity: 0.5; height: 30px;}
-            .infobox .btn-sup span { padding-left: 10px; position: relative; top: 2px; }
-            .icons-material .row { margin-bottom: 20px; }
-            .icons-material .col-xs-2 { text-align: center; }
-            .icons-material i { font-size: 34pt; }
-
-            .icon-preview {
-                display: inline-block;
-                padding: 10px;
-                margin: 10px;
-                background: #D5D5D5;
-                border-radius: 3px;
-                cursor: pointer;
-            }
-            .icon-preview span {
-                display: none;
-                position: absolute;
-                background: black;
-                color: #EEE;
-                padding: 5px 8px;
-                font-size: 15px;
-                font-family: Roboto;
-                border-radius: 2px;
-                z-index: 10;
-            }
-            .icon-preview:hover i { color: #4285f4; }
-            .icon-preview:hover span { display: block; cursor: text; }
-
-        </style>
     </head>
-    <body>
+    <body ng-cloak>
 
       <div class="container">
       <div class="page-header" id="banner">
@@ -1566,77 +1535,35 @@
               <div class="col-lg-4">
                   <h2 id="nav-tabs">Tabs</h2>
                   <div class="bs-component">
-                      <ul class="nav nav-tabs" style="margin-bottom: 15px;">
-                          <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
-                          <li><a href="#profile" data-toggle="tab">Profile</a></li>
-                          <li class="disabled"><a>Disabled</a></li>
-                          <li class="dropdown">
-                              <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)" data-target="#">
-                                  Dropdown <span class="caret"></span>
-                              </a>
-                              <ul class="dropdown-menu">
-                                  <li><a href="#dropdown1" data-toggle="tab">Action</a></li>
-                                  <li class="divider"></li>
-                                  <li><a href="#dropdown2" data-toggle="tab">Another action</a></li>
-                              </ul>
-                          </li>
-                      </ul>
-                      <div id="myTabContent" class="tab-content">
-                          <div class="tab-pane fade active in" id="home">
-                              <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
-                          </div>
-                          <div class="tab-pane fade" id="profile">
-                              <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit.</p>
-                          </div>
-                          <div class="tab-pane fade" id="dropdown1">
-                              <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork.</p>
-                          </div>
-                          <div class="tab-pane fade" id="dropdown2">
-                              <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater.</p>
-                          </div>
-                      </div>
+                    <tabset>
+                      <tab heading="Home"active="true">
+                        <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+                      </tab>
+                      <tab heading="Profile">
+                        <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit.</p>
+                      </tab>
+                      <tab heading="Disabled" disabled="true">Disabled tab</tab>
+                      <tab heading="Alert">
+                        <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork.</p>
+                      </tab>
+                    </tabset>                  
                   </div>
               </div>
               <div class="col-lg-4">
                   <h2 id="nav-pills">Pills</h2>
                   <div class="bs-component">
-                      <ul class="nav nav-pills">
-                          <li class="active"><a href="javascript:void(0)">Home</a></li>
-                          <li><a href="javascript:void(0)">Profile</a></li>
-                          <li class="disabled"><a href="javascript:void(0)">Disabled</a></li>
-                          <li class="dropdown">
-                              <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)" data-target="#">
-                                  Dropdown <span class="caret"></span>
-                              </a>
-                              <ul class="dropdown-menu">
-                                  <li><a href="javascript:void(0)">Action</a></li>
-                                  <li><a href="javascript:void(0)">Another action</a></li>
-                                  <li><a href="javascript:void(0)">Something else here</a></li>
-                                  <li class="divider"></li>
-                                  <li><a href="javascript:void(0)">Separated link</a></li>
-                              </ul>
-                          </li>
-                      </ul>
-                  </div>
-                  <br>
-                  <div class="bs-component">
-                      <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
-                          <li class="active"><a href="javascript:void(0)">Home</a></li>
-                          <li><a href="javascript:void(0)">Profile</a></li>
-                          <li class="disabled"><a href="javascript:void(0)">Disabled</a></li>
-                          <li class="dropdown">
-                              <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)" data-target="#">
-                                  Dropdown <span class="caret"></span>
-                              </a>
-                              <ul class="dropdown-menu">
-                                  <li><a href="javascript:void(0)">Action</a></li>
-                                  <li><a href="javascript:void(0)">Another action</a></li>
-                                  <li><a href="javascript:void(0)">Something else here</a></li>
-                                  <li class="divider"></li>
-                                  <li><a href="javascript:void(0)">Separated link</a></li>
-                              </ul>
-                          </li>
-                      </ul>
+                    <tabset type="'pills'">
+                      <tab heading="Home">Selected Home pill</tab>
+                      <tab heading="Profile">Selected Profile pill</tab>
+                      <tab heading="Disabled" disabled="true">Selected Disabled pill</tab>
+                      <tab heading="Action">Selected Action pill</tab>
+                    </tabset>
+                    <tabset type="'pills'" vertical="true">
+                      <tab heading="Home">Selected Home pill</tab>
+                      <tab heading="Profile">Selected Profile pill</tab>
+                      <tab heading="Disabled" disabled="true">Selected Disabled pill</tab>
+                      <tab heading="Action">Selected Action pill</tab>
+                    </tabset>
                   </div>
               </div>
               <div class="col-lg-4">
@@ -2153,14 +2080,13 @@
                     <div class="col-lg-6">
                         <h2>Popovers</h2>
                         <div class="bs-component">
-                            <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">Left</button>
+                            <button type="button" class="btn btn-default" popover-placement="left" popover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">Left</button>
 
-                            <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">Top</button>
+                            <button type="button" class="btn btn-default" popover-placement="top" popover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">Top</button>
 
-                            <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus
-                                                                                                                                                            sagittis lacus vel augue laoreet rutrum faucibus.">Bottom</button>
+                            <button type="button" class="btn btn-default" popover-placement="bottom" popover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">Bottom</button>
 
-                            <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">Right</button>
+                            <button type="button" class="btn btn-default" popover-placement="right" popover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">Right</button>
                         </div>
                         <h2>Tooltips</h2>
                         <div class="bs-component">
