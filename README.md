@@ -8,7 +8,7 @@ Inspired by *Federico Zivolo* implementation of [Bootstrap Material Design](http
 This Bootstrap theme is an easy way to use the new [Material Design guidelines by Google](http://www.google.com/design/spec/material-design/introduction.html) in your Bootstrap 3 based application.
 Just include the theme, after the Bootstrap CSS and include the module in your Angular Dart project at the end of your document (just before the `</body>` tag), and everything will be converted to Material Design (Paper) style.
 
-Check out [the Bootstrap elements at this link](http://akserg.github.io/angular.dart.material/bootstrap-elements.html).
+Check out [the Bootstrap elements at this link](http://akserg.github.io/angular.dart.material.demo).
                                   
 
 #### material-wfont.css or material.css?
